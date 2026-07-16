@@ -87,7 +87,7 @@ def choose_graphs(results):
     print("4. True count over time")
     print("5. Dealer bust rate by upcard")
     print("6. Decision frequency")
-    print("7. EV during first 5,000 hands")
+    print("7. EV during first 500 hands")
     print("A. All graphs")
     print("N. No graphs")
     print()
