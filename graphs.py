@@ -28,11 +28,33 @@ def plot_net(results):
 def plot_ev_by_hands(results):
     plt.figure()
     plt.plot(results.roundHistory, results.evHistory)
-    plt.title("EV by Number of Hands Simulated")
+    plt.axhline(0, linestyle="--", linewidth=1)
+    plt.title("EV Convergence Over Time")
     plt.xlabel("Hands Simulated")
     plt.ylabel("EV per $1 Wagered")
     plt.grid(True)
+    plt.tight_layout()
     plt.savefig("graph_images/ev_by_hands.png", dpi=300, bbox_inches="tight")
+    plt.show()
+
+def plot_ev_by_hands_zoomed(results, max_hands=5000):
+    rounds = []
+    evs = []
+
+    for r, ev in zip(results.roundHistory, results.evHistory):
+        if r <= max_hands:
+            rounds.append(r)
+            evs.append(ev)
+
+    plt.figure()
+    plt.plot(rounds, evs)
+    plt.axhline(0, linestyle="--", linewidth=1)
+    plt.title(f"EV During First {max_hands:,} Hands")
+    plt.xlabel("Hands Simulated")
+    plt.ylabel("EV per $1 Wagered")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig("graph_images/ev_by_hands_zoomed.png", dpi=300, bbox_inches="tight")
     plt.show()
 
 
@@ -114,3 +136,4 @@ def plot_house_edge_by_rules(rule_names, house_edges):
     plt.tight_layout()
     plt.savefig("graph_images/house_edge_by_rules.png", dpi=300, bbox_inches="tight")
     plt.show()
+
