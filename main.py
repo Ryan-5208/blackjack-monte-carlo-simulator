@@ -9,7 +9,8 @@ from graphs import (
     plot_true_count,
     plot_dealer_bust_by_upcard,
     plot_decisions,
-    plot_house_edge_by_rules
+    plot_house_edge_by_rules,
+    plot_ev_by_hands_zoomed
 )
 
 def run_rule_set_comparison(hands, starting_bankroll, base_bet):
@@ -86,6 +87,7 @@ def choose_graphs(results):
     print("4. True count over time")
     print("5. Dealer bust rate by upcard")
     print("6. Decision frequency")
+    print("7. EV during first 5,000 hands")
     print("A. All graphs")
     print("N. No graphs")
     print()
@@ -97,7 +99,7 @@ def choose_graphs(results):
         return
 
     if graph_choice in ["a", "all"]:
-        selected = ["1", "2", "3", "4", "5", "6"]
+        selected = ["1", "2", "3", "4", "5", "6", "7"]
     else:
         selected = graph_choice.split(",")
 
@@ -119,6 +121,8 @@ def choose_graphs(results):
     if "6" in selected:
         plot_decisions(results)
 
+    if "7" in selected:
+        plot_ev_by_hands_zoomed(results)
 
 def main():
     mode = input("Choose mode: (G)ame or (S)imulation: ")
@@ -206,7 +210,7 @@ def main():
                     base_bet=base_bet,
                     settings=settings
                 )
-                
+
                 choose_graphs(results)
 
                 rules_choice = input("Run house edge comparison across rule sets? (Y/N): ").lower()
