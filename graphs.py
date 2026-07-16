@@ -37,7 +37,7 @@ def plot_ev_by_hands(results):
     plt.savefig("graph_images/ev_by_hands.png", dpi=300, bbox_inches="tight")
     plt.show()
 
-def plot_ev_by_hands_zoomed(results, max_hands=2500):
+def plot_ev_by_hands_zoomed(results, max_hands=500):
     rounds = []
     evs = []
 
