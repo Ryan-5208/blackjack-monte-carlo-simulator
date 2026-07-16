@@ -203,7 +203,7 @@ The simulator saves generated graphs inside the `graph_images/` folder.
 
 ![Bankroll Over Time](graph_images/bankroll_over_time.png)
 
-### EV During First 5,000 Hands
+### EV During First 500 Hands
 ![Zoomed EV](graph_images/ev_by_hands_zoomed.png)
 
 ### EV by Hands Simulated
